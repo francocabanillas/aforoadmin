@@ -56,18 +56,17 @@ const TareaState = props => {
             params.append('nombre', tarea.nombre)
             params.append('direccion', tarea.direccion)
             params.append('latitud', tarea.latitud)
-            params.append('logitud', tarea.longitud)
+            params.append('longitud', tarea.longitud)
             params.append('aforo', tarea.aforo )
 
             const config = {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             }
-            
-            console.log(tarea)
+                    
             const url = 'http://aforoactual.mypressonline.com/index.php/sedes/'+tarea.id_marca
-            console.log(url)
+
             const resultado = await axios.post(url, params, config)
-            console.log(resultado)
+
             dispatch({
                 type: AGREGAR_TAREA,
                 payload: resultado.data
@@ -111,7 +110,7 @@ const TareaState = props => {
     //Modificar una tarea
     const actualizarTarea = async tarea => {
         try {
-            
+            console.log('actualizar')
             const params = new URLSearchParams()
             params.append('nombre', tarea.nombre)
             params.append('direccion', tarea.direccion)
@@ -125,8 +124,9 @@ const TareaState = props => {
             }
             
             const url = 'http://aforoactual.mypressonline.com/index.php/sedes/'+tarea.id
-            const resultado = await axios.post(url, params, config)
-
+            console.log(url)
+            const resultado = await axios.put(url, params, config)
+            console.log(resultado)
             dispatch({
                 type: ACTUALIZAR_TAREA,
                 payload: tarea

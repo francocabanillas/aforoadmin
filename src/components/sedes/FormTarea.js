@@ -89,6 +89,7 @@ const FormTarea = () => {
 
         } else {
             //Actualizar tarea existente
+            console.log('tarea por actualizar')
             actualizarTarea(tarea)
 
             //Elimina la tarea seleccionada
